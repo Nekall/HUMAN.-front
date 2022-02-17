@@ -1,11 +1,14 @@
 import './style/main.scss';
 import React from "react";
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from 'components/Navbar';
-import Home from 'pages/Home'
-import Page1 from 'pages/Page1'
-import Page2 from 'pages/Page2'
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "components/Navbar";
+import Home from "pages/Home";
+import Product from "pages/Product";
+import Concept from "pages/Concept";
+import Shop from "pages/Shop";
+import Cart from "pages/Cart";
+import Error from "pages/Error";
 
 const App = () => {
 
@@ -18,11 +21,20 @@ const App = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/page-1">
-              <Page1 />
+            <Route path="/product/:slug">
+              <Product />
             </Route>
-            <Route path="/page-2">
-              <Page2 />
+            <Route path="/concept">
+              <Concept />
+            </Route>
+            <Route path="/products">
+              <Shop />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
+            <Route>
+              <Error />
             </Route>
           </Switch>
         </main>

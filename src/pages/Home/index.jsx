@@ -1,5 +1,4 @@
 const Home = () => {
-//Your JS here.
 return(
   <>
     <h1>Home</h1>
