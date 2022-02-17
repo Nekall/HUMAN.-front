@@ -2,7 +2,7 @@
 @import "fonts.scss";
 
 body{
-  font-family: "Avenir Next";
+  font-family: "Roboto";
   margin: 0;
   padding: 0;
 }
@@ -13,16 +13,25 @@ body{
 }
 
 .navbar{
-  background-color: $color-grey;
   padding: 10px;
 }
 
 nav a{
   color: $color-black;
+  padding: 2px;
   font-weight: bold;
   font-size: 20px;
   margin: 0 5px;
+  text-decoration: none;
   &:hover{
     color: $dark-grey;
   }
+}
+
+.human{
+  font-family: "Inter";
+}
+
+.btn-pages{
+  float: right;
 }
