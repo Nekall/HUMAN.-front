@@ -1,10 +1,18 @@
 @import "colors.scss";
 @import "fonts.scss";
+@import "shop.scss";
+@import "cart.scss";
+@import "footer.scss";
+@import "home.scss";
 
 body{
   font-family: "Roboto";
   margin: 0;
   padding: 0;
+}
+
+.container{
+  min-height: 75vh;
 }
 
 .logo-react{
@@ -30,8 +38,20 @@ nav a{
 
 .human{
   font-family: "Inter";
+  font-size: 30px;
 }
 
 .btn-pages{
   float: right;
+}
+
+.profile{
+  display: flex;
+  justify-content: center;
+}
+
+.signup, .login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

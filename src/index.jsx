@@ -8,7 +8,11 @@ import Product from "pages/Product";
 import Concept from "pages/Concept";
 import Shop from "pages/Shop";
 import Cart from "pages/Cart";
+import Signup from "pages/Signup";
+import Login from "pages/Login";
+import Profile from "pages/Profile";
 import Error from "pages/Error";
+import Footer from "components/Footer";
 
 const App = () => {
 
@@ -20,21 +24,39 @@ const App = () => {
           <Switch>
             <Route path="/" exact>
               <Home />
+              <Footer />
             </Route>
             <Route path="/product/:slug">
               <Product />
+              <Footer />
             </Route>
             <Route path="/concept">
               <Concept />
+              <Footer />
             </Route>
-            <Route path="/products">
+            <Route path="/products" exact>
               <Shop />
+              <Footer />
             </Route>
             <Route path="/cart">
               <Cart />
+              <Footer />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+              <Footer />
+            </Route>
+            <Route path="/login">
+              <Login />
+              <Footer />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+              <Footer />
             </Route>
             <Route>
               <Error />
+              <Footer />
             </Route>
           </Switch>
         </main>
