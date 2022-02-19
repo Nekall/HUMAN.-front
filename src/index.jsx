@@ -11,10 +11,16 @@ import Cart from "pages/Cart";
 import Signup from "pages/Signup";
 import Login from "pages/Login";
 import Profile from "pages/Profile";
+import ModifyProfile from "pages/ModifyProfile";
 import Error from "pages/Error";
 import Footer from "components/Footer";
 
 const App = () => {
+
+  //Init LocalStorage session state
+  if(localStorage.getItem("human.__session") === null){
+    localStorage.setItem("human.__session", false);
+  }
 
   return (
     <div>
@@ -50,8 +56,12 @@ const App = () => {
               <Login />
               <Footer />
             </Route>
-            <Route path="/profile">
+            <Route path="/profile" exact>
               <Profile />
+              <Footer />
+            </Route>
+            <Route path="/profile/modify">
+              <ModifyProfile />
               <Footer />
             </Route>
             <Route>

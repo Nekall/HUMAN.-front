@@ -11,6 +11,16 @@ body{
   padding: 0;
 }
 
+.bold{
+  font-weight: bold;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container{
   min-height: 75vh;
 }
@@ -50,8 +60,17 @@ nav a{
   justify-content: center;
 }
 
-.signup, .login{
+.signup, .login, .error{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+//Logout btn
+.logout{
+  border: solid 1px #000000;
+  border-radius: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 18px;
 }
