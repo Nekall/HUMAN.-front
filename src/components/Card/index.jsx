@@ -7,7 +7,7 @@ return (
   <div className="cards">
     {props.props.map((products) => (
       <div className="card" key={uuidv4()}>
-        <Link className="card-link" to="/product/hello_world">
+        <Link className="card-link" to={`/product/${products.slug}/${products.id}`}>
           <p>{products.name}</p>
           <p>{products.price} €</p>
         </Link>
@@ -17,6 +17,3 @@ return (
 )};
 
 export default Cards;
-
-
-//<Link className="" to="/">HUMAN.</Link>

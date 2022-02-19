@@ -7,12 +7,16 @@ const Footer = () => (
       <p>Because we are all human.</p>
     </div>
     <footer className="footer">
-      <Link className="" to="/">HUMAN.</Link>
-      <Link className="" to="/products">Shop</Link>
-      <Link className="" to="/concept">Concept</Link>
-      <Link className="" to="/privacy-policy">Privacy Policy</Link>
-      <Link className="" to="/frequently-asked-questions">FAQ</Link>
-      <Link className="" to="/terms-of-use">Terms of use</Link>
+      <div>
+        <Link className="" to="/">HUMAN.</Link>
+        <Link className="" to="/products">Shop</Link>
+        <Link className="" to="/concept">Concept</Link>
+      </div>
+      <div>
+        <Link className="" to="/">Privacy Policy</Link>
+        <Link className="" to="/">FAQ</Link>
+        <Link className="" to="/">Terms of use</Link>
+      </div>
     </footer>
   </>
 );

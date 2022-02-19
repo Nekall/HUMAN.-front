@@ -1,13 +1,17 @@
 .footer{
-  flex-shrink: 0;
+  font-size: 18px;
   text-align: center;
   background-color: #000000;
   color: #ffffff;
   height: 20vh;
-  padding: 20px;
+  padding: 50px 20px;
   & a{
     text-decoration: none;
     color: #ffffff;
+    margin: 0 65px;
+  }
+  & div{
+    margin-top: 35px;
   }
 }
 
