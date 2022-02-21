@@ -17,7 +17,7 @@ const Shop = () => {
 
 return(
   <div className="container">
-    {AllProducts? <Card props={AllProducts}/> : <p className="center">Chargement. . . </p>}
+    {AllProducts? <Card props={AllProducts}/> : <p className="center">Loading. . . </p>}
   </div>
 )};
 export default Shop;

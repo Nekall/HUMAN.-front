@@ -1,7 +1,9 @@
-import React, { useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { SessionContext } from "../../context/SessionContext";
 
 const Login = () => {
+  const {toggleSession, session} = useContext(SessionContext);
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,6 +11,10 @@ const Login = () => {
     email: email,
     password: password
   };
+
+  if(session){
+    history.push("/");
+  }
 
   const logUser = (e) => {
     e.preventDefault();
@@ -22,21 +28,23 @@ const Login = () => {
     })
     .then((response) => response.json())
     .then((user) => {
-        if(user.data.email){
+      console.log(user);
+        if(user.data){
           alert("Connected");
-          localStorage.setItem("human.__session", true);
+          toggleSession(true);
           localStorage.setItem("human.__token", user.token);
+          localStorage.setItem("human.__userId", user.data.id);
           history.push("/");
         }else{
-          alert(user.message)
-          localStorage.setItem("human.__session", false);
+          alert(user.message);
+          toggleSession(false);
           console.log("error");
         }
       })
     .catch((err) => {
       alert(err)
       console.log(err);
-      localStorage.setItem("human.__session", false);
+      toggleSession(false);
     });
   };
 

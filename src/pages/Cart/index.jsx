@@ -1,4 +1,14 @@
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { SessionContext } from "../../context/SessionContext";
+import { v4 as uuidv4 } from "uuid";
+
 const Cart = () => {
+  const {session} = useContext(SessionContext);
+  if(!session){history.push("/")};
+  const history = useHistory();
+  let storageProducts = JSON.parse(localStorage.getItem("human.__cart"));
+  let total = 0;
   let date = new Date();
   let time = ((date.getHours().toString()).length>1? date.getHours() : "0"+date.getHours()) +":"+ ((date.getMinutes().toString()).length>1? date.getMinutes() : "0"+date.getMinutes());
   let dotd =
@@ -8,11 +18,15 @@ const Cart = () => {
     +"/"+
     date.getFullYear();
 
+  const removeProduct = (productRef) => {
+    let products = storageProducts.filter(product => product.productRef !== productRef );
+    localStorage.setItem("human.__cart", JSON.stringify(products));
+  }
 
-  //localStorage.setItem("human.__cart", "test")
-  localStorage.removeItem("human.__cart")
 
-  if(localStorage.getItem("human.__cart") === null){
+
+//return
+  if(storageProducts.length === 0){
     return(
       <div className="container">
         <div className="cart">
@@ -40,9 +54,6 @@ const Cart = () => {
       </div>
     )
   }else{
-
-    //process in data in localStorage
-
     return(
       <div className="container">
         <div className="cart">
@@ -53,16 +64,20 @@ const Cart = () => {
             <p>*******************************************************</p>
             <p>*                           Details of your cart                              *</p>
             <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
-            <p>*       Names of the products     |   Quantity   |   Price   *</p>
+            <p>*   Names of the products  | Size |   Quantity   |   Price   *</p>
             <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
-            <p>*       Title of the first product         |      x1 |     40 €       *</p>
-            <p>*    Title of the second product      |      x1 |     60 €       *</p>
-            <p>*       Title of the third product        |      x1 |     45 €       *</p>
-            <p>*     Title of the fourth product        |      x1 |      5 €       *</p>
+            {storageProducts.map((product) => {
+              total += product.price;
+              return(<p key={uuidv4()} >*    {product.name} |    {product.size}     |      x{product.quantity} |     {product.price} €       *</p>)
+            })}
+            <p>*                                                                                          *</p>
             <p>*                                                                                          *</p>
             <p>*******************************************************</p>
-            <p>*    TVA included                           TOTAL    |      200€    *</p>
+            <p>*    TVA included                           <span className="bold">TOTAL</span>    |      {total}€    *</p>
             <p>*******************************************************</p>
+          </div>
+          <div>
+            <button className="order" type="button">Place Order</button>
           </div>
         </div>
       </div>

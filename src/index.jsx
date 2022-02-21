@@ -14,63 +14,65 @@ import Profile from "pages/Profile";
 import ModifyProfile from "pages/ModifyProfile";
 import Error from "pages/Error";
 import Footer from "components/Footer";
+import SessionContextProvider from 'context/SessionContext';
 
 const App = () => {
 
-  //Init LocalStorage session state
-  if(localStorage.getItem("human.__session") === null){
-    localStorage.setItem("human.__session", false);
+  if(!localStorage.getItem("human.__cart")){
+    localStorage.setItem("human.__cart", JSON.stringify([]));
   }
 
   return (
     <div>
-      <Router>
-        <Navbar />
-        <main>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-              <Footer />
-            </Route>
-            <Route path="/product/:slug/:id">
-              <Product />
-              <Footer />
-            </Route>
-            <Route path="/concept">
-              <Concept />
-              <Footer />
-            </Route>
-            <Route path="/products" exact>
-              <Shop />
-              <Footer />
-            </Route>
-            <Route path="/cart">
-              <Cart />
-              <Footer />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-              <Footer />
-            </Route>
-            <Route path="/login">
-              <Login />
-              <Footer />
-            </Route>
-            <Route path="/profile" exact>
-              <Profile />
-              <Footer />
-            </Route>
-            <Route path="/profile/modify">
-              <ModifyProfile />
-              <Footer />
-            </Route>
-            <Route>
-              <Error />
-              <Footer />
-            </Route>
-          </Switch>
-        </main>
-      </Router>
+      <SessionContextProvider>
+        <Router>
+          <Navbar />
+          <main>
+            <Switch>
+              <Route path="/" exact>
+                <Home />
+                <Footer />
+              </Route>
+              <Route path="/product/:slug/:id">
+                <Product />
+                <Footer />
+              </Route>
+              <Route path="/concept">
+                <Concept />
+                <Footer />
+              </Route>
+              <Route path="/products" exact>
+                <Shop />
+                <Footer />
+              </Route>
+              <Route path="/cart">
+                <Cart />
+                <Footer />
+              </Route>
+              <Route path="/signup">
+                <Signup />
+                <Footer />
+              </Route>
+              <Route path="/login">
+                <Login />
+                <Footer />
+              </Route>
+              <Route path="/profile" exact>
+                <Profile />
+                <Footer />
+              </Route>
+              <Route path="/profile/modify">
+                <ModifyProfile />
+                <Footer />
+              </Route>
+              <Route>
+                <Error />
+                <Footer />
+              </Route>
+            </Switch>
+          </main>
+        </Router>
+      </SessionContextProvider>
     </div>
   )
 };

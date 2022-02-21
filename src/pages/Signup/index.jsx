@@ -1,6 +1,10 @@
-import React, { useState} from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory } from "react-router-dom";
+import { SessionContext } from "../../context/SessionContext";
 
 const Signup = () => {
+  const {toggleSession, session} = useContext(SessionContext);
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,12 +28,13 @@ const Signup = () => {
     .then((user) => {
         alert("Register");
         console.log(user);
-        localStorage.setItem("human.__session", true);
+        toggleSession(true);
+        history.push("/login");
       })
     .catch((err) => {
       alert(err)
       console.log(err);
-      localStorage.setItem("human.__session", false);
+      toggleSession(false);
     });
   };
 
