@@ -17,7 +17,7 @@ const Signup = () => {
   const signupUser = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/register",{
+    fetch(`${process.env.REACT_APP_DOMAIN}register`,{
       method:"POST",
       headers: {
         "Content-Type" : "application/json"

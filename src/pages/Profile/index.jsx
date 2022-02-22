@@ -12,7 +12,7 @@ const Profile = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/${userId}`,{
+    fetch(`${process.env.REACT_APP_DOMAIN}user/${userId}`,{
       method:"GET",
     })
     .then((response) => response.json())

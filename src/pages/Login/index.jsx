@@ -19,7 +19,7 @@ const Login = () => {
   const logUser = (e) => {
     e.preventDefault();
 
-    fetch("http://localhost:3000/login",{
+    fetch(`${process.env.REACT_APP_DOMAIN}login`,{
       method:"POST",
       headers: {
         "Content-Type" : "application/json"

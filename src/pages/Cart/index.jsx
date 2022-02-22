@@ -68,7 +68,7 @@ const Cart = () => {
             <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
             {storageProducts.map((product) => {
               total += product.price;
-              return(<p key={uuidv4()} >*    {product.name} |    {product.size}     |      x{product.quantity} |     {product.price} €       *</p>)
+              return(<p key={uuidv4()} >*        {product.name}            |    {product.size}     |      x{product.quantity} |     {product.price} €       *</p>)
             })}
             <p>*                                                                                          *</p>
             <p>*                                                                                          *</p>

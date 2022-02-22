@@ -5,7 +5,7 @@ const Shop = () => {
   const [AllProducts, SetAllProducts] = useState()
 
   useEffect(() => {
-    fetch("http://localhost:3000/products",{
+    fetch(`${process.env.REACT_APP_DOMAIN}products`,{
       method:"GET",
     })
     .then((response) => response.json())

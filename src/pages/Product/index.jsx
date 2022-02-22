@@ -11,7 +11,7 @@ const Product = () => {
   const {session} = useContext(SessionContext);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/product/${params.id}`,{
+    fetch(`${process.env.REACT_APP_DOMAIN}product/${params.id}`,{
       method:"GET",
     })
     .then((response) => response.json())
