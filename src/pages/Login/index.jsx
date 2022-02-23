@@ -57,7 +57,7 @@ const Login = () => {
           <div><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required></input></div>
           <div><label htmlFor="psw">Password</label></div>
           <div><input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required></input></div>
-          <div><button type="submit">Login</button></div>
+          <div><button className="stylized-btn" type="submit">Login</button></div>
         </form>
       </div>
     </div>

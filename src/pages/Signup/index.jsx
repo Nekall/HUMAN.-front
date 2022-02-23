@@ -49,7 +49,7 @@ const Signup = () => {
           <div><input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required></input></div>
           <div><label htmlFor="cpsw">Confirmation Password</label></div>
           <div><input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required></input></div>
-          <div><button type="submit">Signup</button></div>
+          <div><button className="stylized-btn" type="submit">Signup</button></div>
         </form>
       </div>
     </div>
