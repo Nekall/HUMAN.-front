@@ -38,9 +38,9 @@ export const CheckoutForm = () =>{
   }
 
   return(
-    <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
+    <form onSubmit={handleSubmit} style={{ minWidth: 335 }}>
       <CardElement options={{hidePostalCode: true}}/>
-      <button>Place order</button>
+      <button className="stylized-btn">Place order</button>
     </form>
   )
 }

@@ -1,6 +1,6 @@
 const Concept = () => {
 return(
-  <div className="container">
+  <div className="container concept-page">
     <h1>Concept</h1>
     <p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at libero nec risus tincidunt luctus. Nulla tempus eu massa sed efficitur. Proin interdum quis velit blandit vulputate. Duis tempus vehicula augue, eget tincidunt lectus. Ut vel sapien ut diam volutpat volutpat. In aliquet lectus eu massa pulvinar, quis hendrerit elit congue. Nulla augue nunc, consequat a mattis id, egestas in ligula. Pellentesque sodales dignissim dictum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent nec nisl in libero mollis vehicula. Pellentesque pharetra metus posuere nunc euismod sodales. Donec eleifend nibh urna, ac lacinia quam suscipit quis. In hac habitasse platea dictumst. Aliquam auctor augue lobortis enim accumsan sodales.

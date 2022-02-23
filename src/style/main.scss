@@ -4,6 +4,9 @@
 @import "cart.scss";
 @import "footer.scss";
 @import "home.scss";
+@import "product.scss";
+@import "concept.scss";
+@import "login.scss";
 
 body{
   font-family: "Roboto";
@@ -23,6 +26,7 @@ body{
 
 .container{
   min-height: 75vh;
+  margin-top: 25px;
 }
 
 .logo-react{
@@ -32,6 +36,31 @@ body{
 
 .navbar{
   padding: 20px;
+}
+
+.stylized-btn{
+  border: solid 1px #000000;
+  border-radius: 0;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px 8px;
+  margin: 10px;
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 16px;
+  &:disabled,
+  &[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    &:hover{
+      background-color: #cccccc;
+    }
+  }
+  &:hover{
+    background-color: rgba(#000000, 0.75);
+  }
+  cursor: pointer;
 }
 
 nav a{

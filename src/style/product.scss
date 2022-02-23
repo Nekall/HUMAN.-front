@@ -1,0 +1,24 @@
+.product-page{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.photos-product{
+  background-color: #9d9d9d;
+  margin: 10px 150px;
+}
+
+.description-product{
+
+}
+
+#sizes-select{
+  border: solid 1px #000000;
+  padding: 4px 2px;
+  margin: 10px;
+}
+
+#number{
+  width: 100px;
+  margin: 10px;
+}

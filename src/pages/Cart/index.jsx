@@ -81,7 +81,7 @@ const Cart = (props) => {
             <p>*    TVA included                           <span className="bold">TOTAL</span>    |      {total}€    *</p>
             <p>*******************************************************</p>
           </div>
-          <div>
+          <div className="center">
             <StripeContainer/>
           </div>
         </div>
