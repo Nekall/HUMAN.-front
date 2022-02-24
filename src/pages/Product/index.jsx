@@ -2,13 +2,15 @@ import { Link, useParams } from "react-router-dom";
 import React, {useState, useEffect, useContext } from 'react';
 import { v4 as uuidv4 } from "uuid";
 import { SessionContext } from "../../context/SessionContext";
+import { useAlert } from "react-alert";
 
 const Product = () => {
   const params = useParams();
   const [product, setProduct] = useState();
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const {session} = useContext(SessionContext);
+  const alert = useAlert();
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_DOMAIN}product/${params.id}`,{
@@ -22,6 +24,7 @@ const Product = () => {
   }, [params.id])
 
     const updateCart = (e) => {
+      alert.success("Article added to your cart");
       let actualCart = []
       if(localStorage.getItem("human.__cart")){
           actualCart = JSON.parse(localStorage.getItem("human.__cart"));
@@ -42,26 +45,20 @@ const Product = () => {
             <p>Color : {product.data.colors}</p>
             <p>Composition : {product.data.composition}</p>
             <p>Description : {product.data.description}</p>
-
-            <form onSubmit={updateCart}>
-              <div>
-                <select name="sizes" id="sizes-select" onChange={(e) => setSize(e.target.value)} required>
-                    <option value="">Choose a size</option>
-                    {product.data.sizes.split(",").map((size) => {
-                        return (<option key={uuidv4()} value={size}>{size}</option>)
-                      })}
-                </select>
-              </div>
-              {session?
-                (product.data.quantity<1?
-                  <input className="btn-add-cart stylized-btn" type="submit" value="Submit" value="Add to cart" disabled/>
-                  :
-                  <div>
-                    <div><input id="number" type="number" min="1" max={product.data.quantity} onChange={(e) => setQuantity(e.target.value)} required/></div>
-                    <div><input className="btn-add-cart stylized-btn" type="submit" value="Submit" value="Add to cart"/></div>
-                  </div>)
-                   : <span>To add this product to your cart : <Link className="" to="/login">Login</Link> or <Link className="" to="/signup">Signup</Link></span>}
-            </form>
+            <div>
+            {product.data.sizes.split(",").map((size) => {
+                return (<button onClick={(e)=> setSize(e.target.value)} key={uuidv4()} value={size}>{size}</button>)
+              })}
+            </div>
+            {session?
+              (product.data.quantity<1?
+                <input className="btn-add-cart stylized-btn" type="submit" value="Submit" value="Add to cart" disabled/>
+                :
+                <div>
+                  {/*<div><input id="number" type="number" min="1" max={product.data.quantity} onChange={(e) => setQuantity(e.target.value)} required/></div>*/}
+                  <div><button onClick={()=>updateCart()} className="btn-add-cart stylized-btn" type="submit" value="Submit">Add one to cart</button></div>
+                </div>)
+                 : <span>To add this product to your cart : <Link className="" to="/login">Login</Link> or <Link className="" to="/signup">Signup</Link></span>}
             <p>Details & Care : {product.data.care}</p>
             <p>Reference : {product.data.reference}</p>
           </>

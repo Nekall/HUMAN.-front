@@ -5,12 +5,12 @@ import { CheckoutForm } from "./CheckoutForm";
 
 const stripeTestPromise = loadStripe(process.env.REACT_APP_PK_STRIPE);
 
-const Stripe = () => {
+const StripeContainer = (props) => {
   return(
     <Elements stripe={stripeTestPromise}>
-      <CheckoutForm />
+      <CheckoutForm props={props} />
     </Elements>
   )
 }
 
-export default Stripe;
+export default StripeContainer;

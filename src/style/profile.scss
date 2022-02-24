@@ -1,0 +1,12 @@
+.edit-profile{
+  & input{
+    border: solid 1px #000000;
+    border-radius: 0;
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 18px;
+  }
+  & label{
+    font-weight: bold;
+  }
+}

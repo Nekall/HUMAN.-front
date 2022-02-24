@@ -7,6 +7,8 @@
 @import "product.scss";
 @import "concept.scss";
 @import "login.scss";
+@import "profile.scss";
+@import "successorder.scss";
 
 body{
   font-family: "Roboto";
@@ -22,6 +24,10 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.center-text{
+  text-align: center;
 }
 
 .container{
@@ -98,8 +104,9 @@ nav a{
 //Logout btn
 .logout{
   border: solid 1px #000000;
-  border-radius: none;
+  border-radius: 0;
   padding: 5px 8px;
   cursor: pointer;
   font-size: 18px;
+  margin-bottom: 4px;
 }

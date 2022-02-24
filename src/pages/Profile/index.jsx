@@ -28,16 +28,14 @@ return(
       <div>
         <h1>Profile</h1>
         <h2>User Informations</h2>
-        <p>{userData.data.firstName}</p>
-        <p>{userData.data.lastName}</p>
+        <p>{userData.data.firstName} {userData.data.lastName}</p>
         <p>{userData.data.email}</p>
-        <p>{userData.data.zipCode}</p>
         <p>{userData.data.streetAddress}</p>
+        <p>{userData.data.city} {userData.data.zipCode}</p>
         <p>{userData.data.state}</p>
         <p>{userData.data.country}</p>
-        <p>{userData.data.city}</p>
         <p>{userData.data.phone}</p>
-        <Link className="" to="/profile/modify">Modify your profile</Link>
+        <Link className="" to="/profile/edit">Edit your profile</Link>
         <h2>Order History</h2>
         {userData.data.tickets === null?
         <p>You have not placed any orders yet.</p>

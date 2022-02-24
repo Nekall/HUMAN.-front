@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { SessionContext } from "../../context/SessionContext";
+import { useAlert } from "react-alert";
 
 const Login = () => {
   const {toggleSession, session} = useContext(SessionContext);
   const history = useHistory();
+  const alert = useAlert();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const data = {
@@ -30,20 +32,20 @@ const Login = () => {
     .then((user) => {
       console.log(user);
         if(user.data){
-          alert("Connected");
+          alert.success("Connected");
           toggleSession(true);
           localStorage.setItem("human.__token", user.token);
           localStorage.setItem("human.__userId", user.data.id);
+          window.location.reload(false);
+          
           history.push("/");
         }else{
-          alert(user.message);
+          alert.error(user.message);
           toggleSession(false);
-          console.log("error");
         }
       })
     .catch((err) => {
-      alert(err)
-      console.log(err);
+      alert.error(err);
       toggleSession(false);
     });
   };
