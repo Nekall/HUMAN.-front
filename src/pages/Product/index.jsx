@@ -29,9 +29,19 @@ const Product = () => {
       if(localStorage.getItem("human.__cart")){
           actualCart = JSON.parse(localStorage.getItem("human.__cart"));
       }
-      actualCart.push({'name' : product.data.name, 'quantity' : quantity, 'price' : product.data.price, 'size' : size, 'reference' : product.data.reference });
+      actualCart.push({id: uuidv4(),'name' : product.data.name, 'quantity' : quantity, 'price' : product.data.price, 'size' : size, 'reference' : product.data.reference });
       localStorage.setItem("human.__cart", JSON.stringify(actualCart));
     }
+
+    const choseSize = (value, id) => {
+      let sizesBtn = document.getElementsByClassName("size-btn");
+      for(let i = 0; i < sizesBtn.length; i++){
+        sizesBtn[i].classList.remove("active");
+      }
+      document.getElementById(id).classList.add("active");
+      React.setSize(value);
+    }
+
 
   return(
     <div className="container product-page">
@@ -46,8 +56,8 @@ const Product = () => {
             <p>Composition : {product.data.composition}</p>
             <p>Description : {product.data.description}</p>
             <div>
-            {product.data.sizes.split(",").map((size) => {
-                return (<button onClick={(e)=> setSize(e.target.value)} key={uuidv4()} value={size}>{size}</button>)
+            {product.data.sizes.split(",").map((size, index) => {
+                return (<button className="stylized-btn size-btn" id={`size-${index}`} onClick={(e)=> choseSize(e.target.value, `size-${index}`)} key={uuidv4()} value={size}>{size}</button>)
               })}
             </div>
             {session?
@@ -58,7 +68,7 @@ const Product = () => {
                   {/*<div><input id="number" type="number" min="1" max={product.data.quantity} onChange={(e) => setQuantity(e.target.value)} required/></div>*/}
                   <div><button onClick={()=>updateCart()} className="btn-add-cart stylized-btn" type="submit" value="Submit">Add one to cart</button></div>
                 </div>)
-                 : <span>To add this product to your cart : <Link className="" to="/login">Login</Link> or <Link className="" to="/signup">Signup</Link></span>}
+                 : <span>To add this product to your cart : <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link></span>}
             <p>Details & Care : {product.data.care}</p>
             <p>Reference : {product.data.reference}</p>
           </>

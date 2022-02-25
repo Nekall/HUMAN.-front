@@ -35,9 +35,10 @@ body{
   margin-top: 25px;
 }
 
-.logo-react{
-  width: 35px;
-  margin-right: 25px;
+.active{
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: solid 1px #000000 !important;
 }
 
 .navbar{

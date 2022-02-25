@@ -21,14 +21,10 @@ const Cart = () => {
     let userId = localStorage.getItem("human.__userId");
     const [userData, setUserData] = useState();
 
-  const removeProduct = (productRef) => {
-    let products = storageProducts.filter(product => product.productRef !== productRef );
+  const removeProduct = (productId, id) => {
+    let products = storageProducts.filter(product => product.id !== productId);
     localStorage.setItem("human.__cart", JSON.stringify(products));
-  }
-
-  const handleSubmit = async (e) =>{
-    console.log("handleP");
-    e.preventDefault();
+    document.getElementById(id).remove();
   }
 
   useEffect(() => {
@@ -48,24 +44,24 @@ const Cart = () => {
       <div className="container">
         <div className="cart">
           <div className="ticket">
-          <p>*******************************************************</p>
-          <p>*                                    <span className="bold">HUMAN.</span>                                      *</p>
-          <p>*                         Clothing for humans.                           *</p>
-          <p>*******************************************************</p>
-          <p>*                           Details of your cart                              *</p>
+          <p>{("*").repeat(55)}</p>
+          <p>*{(" ").repeat(36)}<span className="bold">HUMAN.</span>{(" ").repeat(36)}  *</p>
+          <p>*{(" ").repeat(26)}Clothing for humans.{(" ").repeat(26)}*</p>
+          <p>{("*").repeat(55)}</p>
+          <p>*{(" ").repeat(28)}Details of your cart{(" ").repeat(28)}*</p>
           <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
-          <p>*       Names of the products     |   Quantity   |   Price   *</p>
+          <p>*     Names of the products     |   Quantity   | Price *</p>
           <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
-          <p>*                                                                                          *</p>
-          <p>*                                                                                          *</p>
-          <p>*                                                                                          *</p>
+          <p>*{(" ").repeat(90)}*</p>
+          <p>*{(" ").repeat(90)}*</p>
+          <p>*{(" ").repeat(90)}*</p>
           <p>*                           Your cart is empty.                              *</p>
-          <p>*                                                                                          *</p>
-          <p>*                                                                                          *</p>
-          <p>*                                                                                          *</p>
-          <p>*******************************************************</p>
+          <p>*{(" ").repeat(90)}*</p>
+          <p>*{(" ").repeat(90)}*</p>
+          <p>*{(" ").repeat(90)}*</p>
+          <p>{("*").repeat(55)}</p>
           <p>*    TVA included                           TOTAL    |        0€    *</p>
-          <p>*******************************************************</p>
+          <p>{("*").repeat(55)}</p>
           </div>
         </div>
       </div>
@@ -75,23 +71,23 @@ const Cart = () => {
       <div className="container">
         <div className="cart">
           <div className="ticket">
-            <p>*******************************************************</p>
-            <p>*                                    <span className="bold">HUMAN.</span>                                      *</p>
-            <p>*                         Clothing for humans.                           *</p>
-            <p>*******************************************************</p>
-            <p>*                           Details of your cart                              *</p>
-            <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
+            <p>{("*").repeat(55)}</p>
+            <p>*{(" ").repeat(38)}<span className="bold">HUMAN.</span>{(" ").repeat(38)}*</p>
+            <p>*{(" ").repeat(27)}Clothing for humans.{(" ").repeat(27)}*</p>
+            <p>{("*").repeat(55)}</p>
+            <p>*{(" ").repeat(29)}Details of your cart{(" ").repeat(29)}*</p>
+            <p>*{(" - ").repeat(28)}*</p>
             <p>*   Names of the products  | Size |   Quantity   |   Price   *</p>
-            <p>* -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - *</p>
-            {storageProducts.map((product) => {
+            <p>*{(" - ").repeat(28)}*</p>
+            {storageProducts.map((product, index) => {
               total += product.price;
-              return(<p key={uuidv4()} >*        {product.name}            |    {product.size}     |      x{product.quantity} |     {product.price} €       *</p>)
+              return(<p key={uuidv4()} id={`item-${index}`}>*        {product.name}            |    {product.size}     |      x{product.quantity} |     {product.price} €    <button onClick={()=> removeProduct(product.id, `item-${index}`)}>✕</button> *</p>)
             })}
-            <p>*                                                                                          *</p>
-            <p>*                                                                                          *</p>
-            <p>*******************************************************</p>
-            <p>*    TVA included                           <span className="bold">TOTAL</span>    |      {total}€    *</p>
-            <p>*******************************************************</p>
+            <p>*{(" ").repeat(90)}*</p>
+            <p>*{(" ").repeat(90)}*</p>
+            <p>{("*").repeat(55)}</p>
+            <p>*    TVA included                           <span className="bold">TOTAL</span>    |      {total.toFixed(2)}€    *</p>
+            <p>{("*").repeat(55)}</p>
           </div>
           <hr/>
           <div className="center-text">
@@ -105,13 +101,13 @@ const Cart = () => {
                 <p>{userData.data.state}</p>
                 <p>{userData.data.country}</p>
                 <p>{userData.data.phone}</p>
-                <Link className="" to="/profile/modify">Edit your informations</Link>
+                <Link className="" to="/profile/edit">Edit your informations</Link>
               </div>
             :""}
             <p>―</p>
           </div>
           <div className="center">
-            <StripeContainer total={total} user={userData}/>
+            <StripeContainer total={total.toFixed(2)} user={userData}/>
           </div>
         </div>
       </div>

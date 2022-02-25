@@ -37,8 +37,7 @@ const Login = () => {
           localStorage.setItem("human.__token", user.token);
           localStorage.setItem("human.__userId", user.data.id);
           window.location.reload(false);
-          
-          history.push("/");
+          //history.push("/");
         }else{
           alert.error(user.message);
           toggleSession(false);

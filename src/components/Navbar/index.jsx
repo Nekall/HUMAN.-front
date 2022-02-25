@@ -13,9 +13,8 @@ const Navbar = () => {
     toggleSession(false);
     window.location.reload(false);
     alert.success("Disconnected");
+    history.push("/");
   }
-
-  console.log("test")
 
   return (
     <nav className="navbar" >
