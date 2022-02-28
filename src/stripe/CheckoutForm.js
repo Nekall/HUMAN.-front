@@ -1,12 +1,12 @@
 import React from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { element } from "prop-types"
+//import { element } from "prop-types"
 import { useHistory } from "react-router-dom";
 import { useAlert } from "react-alert";
 
 export const CheckoutForm = (props) =>{
-  console.log("check:", props);
-  console.log(props.props);
+  //console.log("check:", props);
+  //console.log(props.props);
   const stripe = useStripe();
   const elements = useElements();
   const history = useHistory();
@@ -32,7 +32,7 @@ export const CheckoutForm = (props) =>{
       console.log("stripe_token :", paymentMethod);
       try{
         const { id } = paymentMethod;
-        const response = await fetch(`${process.env.REACT_APP_DOMAIN}stripe/charge`,{
+        await fetch(`${process.env.REACT_APP_DOMAIN}stripe/charge`,{
               method:"POST",
               body: JSON.stringify({
                 amount: props.props.total,

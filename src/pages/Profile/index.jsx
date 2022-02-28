@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const {toggleSession, session} = useContext(SessionContext);
+  const {session} = useContext(SessionContext);
+  const history = useHistory();
   if(!session){history.push("/")};
   let userId = localStorage.getItem("human.__userId");
-  const history = useHistory();
   const [userData, setUserData] = useState();
 
 
@@ -20,7 +20,7 @@ const Profile = () => {
         setUserData(user);
       })
     .catch(err => console.error(err));
-  }, [])
+  }, [userId])
 
 return(
   <div className="container profile">

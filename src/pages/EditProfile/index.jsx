@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { SessionContext } from "../../context/SessionContext";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 
 const EditProfile = () => {
-  const {toggleSession, session} = useContext(SessionContext);
+  const {session} = useContext(SessionContext);
+  const history = useHistory();
   if(!session){history.push("/")};
   let userId = localStorage.getItem("human.__userId");
-  const history = useHistory();
   const [userData, setUserData] = useState();
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -42,7 +41,7 @@ const EditProfile = () => {
         setUserData(user);
       })
     .catch(err => console.error(err));
-  }, [])
+  }, [userId])
 
   const editUser = (e) =>{
     e.preventDefault();

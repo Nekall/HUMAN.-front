@@ -7,8 +7,9 @@ import { useAlert } from "react-alert";
 const Product = () => {
   const params = useParams();
   const [product, setProduct] = useState();
-  const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState("");
+  //const [quantity, setQuantity] = useState();
+  let quantity = 1;
+  const [size, setSize] = useState();
   const {session} = useContext(SessionContext);
   const alert = useAlert();
 

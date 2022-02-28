@@ -4,7 +4,7 @@ import { SessionContext } from "../../context/SessionContext";
 import { useAlert } from "react-alert";
 
 const Signup = () => {
-  const {toggleSession, session} = useContext(SessionContext);
+  const {toggleSession} = useContext(SessionContext);
   const history = useHistory();
   const alert = useAlert();
   const [email, setEmail] = useState("");

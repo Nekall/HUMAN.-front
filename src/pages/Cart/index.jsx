@@ -6,18 +6,19 @@ import StripeContainer from "../../stripe/StripeContainer";
 
 const Cart = () => {
   const {session} = useContext(SessionContext);
-  if(!session){history.push("/")};
   const history = useHistory();
+  if(!session){history.push("/")};
   let storageProducts = JSON.parse(localStorage.getItem("human.__cart"));
   let total = 0;
-  let date = new Date();
-  let time = ((date.getHours().toString()).length>1? date.getHours() : "0"+date.getHours()) +":"+ ((date.getMinutes().toString()).length>1? date.getMinutes() : "0"+date.getMinutes());
-  let dotd =
+  //let date = new Date();
+  //let time = ((date.getHours().toString()).length>1? date.getHours() : "0"+date.getHours()) +":"+ ((date.getMinutes().toString()).length>1? date.getMinutes() : "0"+date.getMinutes());
+  /*let dotd =
     ((date.getDate().toString()).length>1? date.getDate() : "0"+date.getDate())
     +"/"+
     (((date.getMonth()+1).toString()).length>1? (date.getMonth()+1) : "0"+(date.getMonth()+1))
     +"/"+
     date.getFullYear();
+  */
     let userId = localStorage.getItem("human.__userId");
     const [userData, setUserData] = useState();
 
@@ -36,7 +37,7 @@ const Cart = () => {
         setUserData(user);
       })
     .catch(err => console.error(err));
-  }, [])
+  }, [userId])
 
 //return
   if(storageProducts.length === 0){
